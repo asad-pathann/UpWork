@@ -6,10 +6,27 @@ import { FaBriefcase } from "react-icons/fa";
 import Link from "@mui/material/Link";
 import { TbUserCheck } from "react-icons/tb";
 import SecoundSignUp from "./SecoundSignUp";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const FirstSignUp = () => {
+
+const {user} = useSelector((state)=>state.auth)
   const [role, setRole] = useState(false);
   const [secoundScreen, setSecoundScreen] = useState(false);
+
+
+  const navagte = useNavigate()
+
+
+  useEffect(()=>{
+
+    if(user){
+      navagte("/work")
+
+    }
+  },[user])
   return (
     <>
       {secoundScreen ? (

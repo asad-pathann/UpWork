@@ -16,5 +16,5 @@ app.use("/api/users", UserRouter);
 app.use(authHandler);
 
 app.listen(process.env.PORT, () =>
-  console.log(`Server Started On Port:${process.env.PORT.rainbow}`)
+  console.log(`Server Started On Port:${process.env.PORT.cyan}`)
 );

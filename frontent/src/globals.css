@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+
+}
+
+
+
+
+.list_style::before{
+
+  content: " ";
+background-color: lightgray ;
+z-index: 999;
+
+height: 30px;
+width: 30px;
+clip-path: polygon(50% 0%, 25% 64%, 77% 65%);
+position: absolute;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+top: -15px;
+
+
+
+}

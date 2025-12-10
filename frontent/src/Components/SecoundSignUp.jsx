@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { IoLogoApple } from "react-icons/io";
 import Checkbox from "@mui/material/Checkbox";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import ReactFlagsSelect from "react-flags-select";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { RegisterUser } from "../feature/auth/userSlice";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 const SecoundSignUp = ({ role }) => {
   const [country, setcountry] = useState("");
   const [formFeilds, setFormFeilds] = useState({
@@ -25,27 +29,36 @@ const SecoundSignUp = ({ role }) => {
     });
   };
 
+
+  const {user, userLoading,userSuccess,userMessage,userError} = useSelector((state)=>state.auth)
+
+  let dispacth = useDispatch()
+  let navagate = useNavigate()
   const handleRegister = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:5174/api/users/register",
-        {
-          f_name,
-          l_name,
-          password,
-          email,
-          country,
-          terms,
-          mails,
-          role,
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
+    try {     
+ 
+      let userData = {
+        f_name,l_name,role,email,country,password,terms,mails
+      }  
+      
+      
+      dispacth(RegisterUser(userData))
+
+     } catch (error) {
       console.log(error);
     }
   };
 
+
+  useEffect(()=>{
+    if(userError){
+      toast.error(userMessage)
+    }
+    else if(userSuccess){
+      toast.success("congraturltion 💕💕")
+      navagate('/otp')
+    }
+  },[userSuccess,userError])
   return (
     <>
       <div>

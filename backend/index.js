@@ -6,6 +6,7 @@ import { authHandler } from "./middlewares/AuthHandler.js";
 import { UserRouter } from "./Routes/UserRouter.js";
 import { Connect } from "./Connect/ConnectDB.js";
 import cors from "cors";
+import { jobRouter } from "./Routes/postJob.js";
 const app = express();
 
 app.use(express.json());
@@ -13,6 +14,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 Connect();
 app.use("/api/users", UserRouter);
+app.use("/api/jobs", jobRouter);
+
 app.use(authHandler);
 
 app.listen(process.env.PORT, () =>

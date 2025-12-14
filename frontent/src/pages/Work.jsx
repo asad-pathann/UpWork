@@ -22,7 +22,12 @@ const Work = () => {
       </div>
 
       <div className=" flex container  w-[90%] mx-auto items-center justify-between ">
-        <h2 className="text-3xl capitalize">salam Ao Ghlikum {user?.f_name}</h2>
+        <h2 className="text-3xl capitalize">
+          Salam Ao Ghalikum ..
+          <span className="font-semibold uppercase">
+            {user?.f_name} {user?.l_name}
+          </span>
+        </h2>
 
         {/*  */}
 

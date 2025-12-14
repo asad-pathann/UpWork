@@ -10,6 +10,7 @@ import Work from "./pages/Work";
 import { Toaster } from "react-hot-toast";
 import Otp from "./pages/Otp";
 import FirstJob from "./pages/postJob/FirstJob";
+import SecoundJobSection from "./pages/postJob/SecoundJobSection";
 const App = () => {
   return (
     <>
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/work" element={<Work />} />
           <Route path="/otp" element={<Otp />} />
           <Route path="/first-job-section" element={<FirstJob />} />
+          <Route path="/secound-job-section" element={<SecoundJobSection />} />
         </Routes>
       </Router>
     </>

@@ -29,36 +29,36 @@ const SecoundSignUp = ({ role }) => {
     });
   };
 
+  const { user, userLoading, userSuccess, userMessage, userError } =
+    useSelector((state) => state.auth);
 
-  const {user, userLoading,userSuccess,userMessage,userError} = useSelector((state)=>state.auth)
+  let dispacth = useDispatch();
+  let navagate = useNavigate();
 
-  let dispacth = useDispatch()
-  let navagate = useNavigate()
   const handleRegister = async () => {
-    try {     
- 
-      let userData = {
-        f_name,l_name,role,email,country,password,terms,mails
-      }  
-      
-      
-      dispacth(RegisterUser(userData))
+    let userData = {
+      f_name,
+      l_name,
+      role,
+      email,
+      country,
+      password,
+      terms,
+      mails,
+    };
 
-     } catch (error) {
-      console.log(error);
-    }
+    dispacth(RegisterUser(userData));
   };
 
-
-  useEffect(()=>{
-    if(userError){
-      toast.error(userMessage)
+  useEffect(() => {
+    if (userError) {
+      toast.error(userMessage);
     }
-    else if(userSuccess){
-      toast.success("congraturltion 💕💕")
-      navagate('/otp')
+    if (userSuccess) {
+      toast.success("congraturltion 💕💕");
+      navagate("/otp");
     }
-  },[userSuccess,userError])
+  }, [userSuccess, userError]);
   return (
     <>
       <div>

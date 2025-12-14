@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem('user')) || null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   userLoading: false,
   userError: false,
   userMessage: "",
   userSuccess: false,
 };
 
-// ============================
+// =========================
 //  REGISTER USER ASYNC THUNK
 // ============================
 export const RegisterUser = createAsyncThunk(
@@ -21,9 +21,8 @@ export const RegisterUser = createAsyncThunk(
         userData
       );
 
-
-      if(response.data){
-        localStorage.setItem("user",JSON.stringify(response.data))
+      if (response.data) {
+        localStorage.setItem("user", JSON.stringify(response.data));
       }
 
       return response.data; // ✔️ Correct return data
